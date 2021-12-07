@@ -19,56 +19,6 @@ spec:
           key: node-role.kubernetes.io/master
           operator: Equal
           value: ''
-    mon:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: cluster.ocs.openshift.io/openshift-storage
-              operator: Exists
-            - key: node-role.kubernetes.io/master
-              operator: Exists
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - rook-ceph-mon
-              topologyKey: topology.rook.io/rack
-            weight: 100
-      tolerations:
-        - effect: NoSchedule
-          key: node-role.kubernetes.io/master
-          operator: Equal
-          value: ''
-    mgr:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: cluster.ocs.openshift.io/openshift-storage
-              operator: Exists
-            - key: node-role.kubernetes.io/master
-              operator: Exists
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - rook-ceph-mgr
-              topologyKey: topology.rook.io/rack
-            weight: 100
-      tolerations:
-        - effect: NoSchedule
-          key: node-role.kubernetes.io/master
-          operator: Equal
-          value: ''
     mds:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -78,17 +28,6 @@ spec:
               operator: Exists
             - key: node-role.kubernetes.io/master
               operator: Exists
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - rook-ceph-mds
-              topologyKey: topology.rook.io/rack
-            weight: 100
       tolerations:
         - effect: NoSchedule
           key: node-role.kubernetes.io/master
@@ -125,30 +64,20 @@ spec:
         volumeMode: Block
     name: ocs-deviceset
     placement: 
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: cluster.ocs.openshift.io/openshift-storage
-                  operator: Exists
-                - key: node-role.kubernetes.io/master
-                  operator: Exists
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - rook-ceph-osd-prepare
-              topologyKey: topology.rook.io/rack 
-      tolerations: 
-        - effect: NoSchedule
-          key: node-role.kubernetes.io/master
-          operator: Equal
-          value: ''
+      osd: 
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: cluster.ocs.openshift.io/openshift-storage
+                    operator: Exists
+                  - key: node-role.kubernetes.io/master
+                    operator: Exists
+        tolerations: 
+          - effect: NoSchedule
+            key: node-role.kubernetes.io/master
+            operator: Equal
+            value: ''
     portable: false
     replica: 3
     resources: {}
