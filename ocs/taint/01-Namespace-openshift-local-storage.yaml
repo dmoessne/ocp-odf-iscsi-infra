@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+ name: openshift-local-storage
+spec:
+  selector:
+    matchLabels:
+      cluster.ocs.openshift.io/openshift-storage: ""
+      node-role.kubernetes.io/master: ""
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      effect: Equal
+      value: ''
+

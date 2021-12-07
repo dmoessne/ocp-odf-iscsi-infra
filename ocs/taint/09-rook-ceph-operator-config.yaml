@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  CSI_LOG_LEVEL: "5"
+  CSI_PLUGIN_TOLERATIONS: |2-
+
+    - key: node-role.kubernetes.io/master
+      operator: Equal
+      value: ''
+      effect: NoSchedule
+  CSI_PROVISIONER_TOLERATIONS: |2-
+
+    - key: node-role.kubernetes.io/master
+      operator: Equal
+      value: ''
+      effect: NoSchedule
+kind: ConfigMap
+metadata:
+  name: rook-ceph-operator-config
+  namespace: openshift-storage
