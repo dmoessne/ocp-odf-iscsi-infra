@@ -680,7 +680,7 @@ $
 
 ###  Validation 
 For validation I do use my scriptset GitHub - dmoessne/ocs4-tests I use for normal setups as well (S3 still missing..) which creates some pods requesting ocs block and file storage
-
+```
 $ git clone https://github.com/dmoessne/ocs4-tests.git
 $ cd ocs4-tests
 $ $ ./liftoff.sh 
@@ -739,6 +739,7 @@ nginx-file                                         ngx-fs-vl77adldvk4s5pve5dov-p
 nginx-file                                         ngx-fs-vwkssf7dxklsj30lu2t2-pod-294nm                                 1/1     Running     0          2m
 nginx-file                                         ngx-fs-xj5nfk0tu5lg52rwv4f1-pod-qvw7w                                 1/1     Running     0          114s
 $
+```
 Pods are created as well as PVs .
 
 
@@ -746,7 +747,7 @@ Pods are created as well as PVs .
 To be sure upgrade is working as well, let's test one.
 
 Current version is as follows:
-
+```
 $ oc adm upgrade
 Cluster version is 4.8.14
 
@@ -802,16 +803,17 @@ operator-lifecycle-manager-packageserver   4.8.14    True        False         F
 service-ca                                 4.8.14    True        False         False      7h2m
 storage                                    4.8.14    True        False         False      7h1m
 $ 
-
+```
 
 Start the update 
-
+```
 $ oc adm upgrade --to-latest
 Updating to latest version 4.8.22
 $ 
+```
 
 After the update is done, let's check again:
-
+```
 $ oc adm upgrade
 Cluster version is 4.8.22
 
@@ -871,4 +873,4 @@ ip-10-0-190-243.us-west-2.compute.internal   Ready    master   8h    v1.21.6+81b
 ip-10-0-206-139.us-west-2.compute.internal   Ready    master   8h    v1.21.6+81bc627   10.0.206.139   <none>        Red Hat Enterprise Linux CoreOS 48.84.202111222303-0 (Ootpa)   4.18.0-305.28.1.el8_4.x86_64   cri-o://1.21.4-3.rhaos4.8.git84fa55d.el8
 ip-10-0-218-52.us-west-2.compute.internal    Ready    worker   8h    v1.21.6+81bc627   10.0.218.52    <none>        Red Hat Enterprise Linux CoreOS 48.84.202111222303-0 (Ootpa)   4.18.0-305.28.1.el8_4.x86_64   cri-o://1.21.4-3.rhaos4.8.git84fa55d.el8
 $ 
-
+```
