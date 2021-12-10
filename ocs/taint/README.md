@@ -1,6 +1,6 @@
 ## Deploying LSO backed ODF on top of unschedulable control plane nodes (masters)
 
-The procedure outlined here is best to my knowledge not officially supported as of yet. However a RFE will be filed to get validated if full support could be provided.
+The procedure outlined here is best to my knowledge not officially supported as of yet. However a [RFE](https://bugzilla.redhat.com/show_bug.cgi?id=2030403) is filed to get validated if full support could be provided.
 
 # WIP
 
