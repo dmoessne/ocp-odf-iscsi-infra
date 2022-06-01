@@ -192,7 +192,7 @@ First, we need a valid AMI in this AWS region:
 And now we can create the jumphost with a public IP and tag it accordingly
 
 ```bash
-<laptop>$ aws ec2 run-instances --image-id $AMI --count 1 --instance-type  t2.medium --key-name iscsi-demo --security-group-ids $SG_PUB --subnet-id NET_PUB  --associate-public-ip-address
+<laptop>$ aws ec2 run-instances --image-id $AMI --count 1 --instance-type  t2.medium --key-name iscsi-demo --security-group-ids $SG_PUB --subnet-id $NET_PUB  --associate-public-ip-address
 {
     "Groups": [],
     "Instances": [
