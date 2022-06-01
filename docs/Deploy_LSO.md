@@ -12,7 +12,8 @@ We deploy using LSO (and later on ODF) based on [Install Red Hat OpenShift Conta
 * if you want to use the files provided, make sure they fit to your setup, esp disk paths in ```04-05-LocalVolume-local-block.yaml``` and diak size later on for deployin ODF
   
 * As I did not get autodiscovery for LSO running with multipath iscsi, we use the (older and more) manual mathod which still perfectly works. (section [Manual Method to create Persistent Volumes](https://access.redhat.com/articles/5692201#manual-method-to-create-persistent-volumes-5)
-  
+
+* Currently, LSO doesn't support multipath devices discovery (i.e autodiscovery & local volumeset) aren't going to work (Check [BZ 2089387] (https://bugzilla.redhat.com/show_bug.cgi?id=2089387) , we use the manual mathod which still perfectly works. (section [Manual Method to create Persistent Volumes](https://access.redhat.com/articles/5692201#manual-method-to-create-persistent-volumes-5)  
 
 ## Relevant folder content
 
